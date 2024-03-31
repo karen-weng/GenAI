@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Ahpp from './App';
+import aApp from './App';
 import reportWebVitals from './reportWebVitals';
-import AppText from './Components/gemini';
-import AppVideo from './Video.js'
+import App from './Video.js'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
