@@ -1,6 +1,9 @@
-import livevid from './Video'
+import Video from './Video'
+import React from 'react';
 
-function Form({state, setState}) {
+// let globalState = '';
+
+function Form({state, setState, goToVideoPage}) {
     return(
         <form>
             <label htmlFor={'my-input'}>Enter prompt: </label>
@@ -13,14 +16,20 @@ function Form({state, setState}) {
                 value={state}
                 placeholder={'How to...'}
                 onChange={event => {
+                    // globalState = event.target.value;
                     setState(event.target.value)
+                    
                 }}/>
             <br />
             <br />
-            <button onclick="livevid()"> GuideMe </button>
+            <div>
+            <button onclick={"goToVideoPage()"}> GuideMe </button> 
+            </div>
+            
+            {/* </nav> */}
             <br />
             <br />
-            {/* You entered: {state} */}
+            {/* { You entered: {state} } */}
         </form>
     )
 }

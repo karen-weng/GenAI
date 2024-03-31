@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState } from 'react'
 import Form from './Form.js'
-import livevid from './Video.js'
+import Video from './Video.js'
 // import * as handTrack from 'handtrackjs';
 
 // const defaultParams = {
@@ -30,18 +30,29 @@ import livevid from './Video.js'
 // { status: false, msg: 'please provide a valid video element' } 
 // */
 
+
+
 function App() {
   const [state, setState] = useState('')
+  const [currentPage, setCurrentPage] = useState('app');
+
+  const goToVideoPage = () => {
+    setCurrentPage('video');
+  };
+
+  // const handleButtonClick = () => {
+  //   setCurrentPage(currentPage === 'app' ? 'video' : 'app');
+  // } ;
 
   return (
     <div>
 
         <div class="intro">
           <br />
-          <h1>GuildAI</h1>
-          <p>GuideAI is a program designed to guide the user step-by-step
+          <h1>InstaTeach</h1>
+          <p>InstaTeach is a program designed to guide the user step-by-step
             through a tutorial prompted by the user.</p>
-          <p>To get started, enter an activity you want GuideAI to guide you through.</p>
+          <p>To get started, enter an activity you want InstaTeach to guide you through.</p>
           <br />
         </div>
         {/* <video id='videoid' width="800" height="200" />
@@ -49,11 +60,17 @@ function App() {
         <br />
         <br />
 
-        {/* <div class="userInput">
+        <div class="userInput">
           <br />
           <br />
           <Form state={state} setState={setState} />
-        </div> */}
+        </div> 
+
+        <div>
+          {currentPage === 'app' && <Form goToVideoPage={goToVideoPage} />}
+          {/* {currentPage === 'video' && <Video go/>} */}
+        </div>
+
     </div>
 
   )

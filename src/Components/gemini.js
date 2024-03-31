@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './gemini.css';
 
 function Gemini() {
+  // prompt = globalState;
   const [prompt, setPrompt] = useState('');
   const [output, setOutput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +30,7 @@ function Gemini() {
 
   return (
     <div>
-      <h1>Gemini</h1>
+      <h1>InstaTeach</h1>
       <input type="text" value={prompt} onChange={e => setPrompt(e.target.value)} placeholder="Enter a prompt" />
       <button onClick={handleSubmit} disabled={isLoading}>
         {isLoading ? 'Loading...' : 'Generate Text'}
