@@ -16,7 +16,7 @@ function Form({state, setState}) {
                 }}/>
             <br />
             <br />
-            <button onclick="myFunction()"> Submit </button>
+            <button onclick="myFunction()"> GuideMe </button>
             <br />
             <br />
             {/* You entered: {state} */}
