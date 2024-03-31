@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useState } from 'react'
+import Form from './Form.js'
 
 function App() {
   const [state, setState] = useState('')
@@ -22,27 +23,7 @@ function App() {
         <div class="userInput">
           <br />
           <br />
-          <form>
-            <label htmlFor={'my-input'}>Enter prompt: </label>
-            <br />
-            <br />
-            <textarea rows="4" cols="50"
-              id={'my-input'}
-              type={'text'}
-              class="input-box"
-              value={state}
-              placeholder={'How to...'}
-              onChange={event => {
-                setState(event.target.value)
-              }}
-            />
-            <br />
-            <br />
-            <button onclick="myFunction()"> Submit </button>
-            <br />
-            <br />
-            {/* You entered: {state} */}
-          </form>
+          <Form state={state} useState={useState} />
         </div>
         
     </div>
