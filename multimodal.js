@@ -3,49 +3,44 @@ const {VertexAI} = require('@google-cloud/vertexai');
 /**
  * TODO(developer): Update these variables before running the sample.
  */
-async function createNonStreamingMultipartContent(
+async function sendMultiModalPromptWithVideo(
   projectId = 'gemini-test-418822',
   location = 'us-central1',
   model = 'gemini-1.0-pro-vision',
-  image = 'gs://pleasepleasework/image1.jpeg',
-  mimeType = 'image/jpeg'
+  // image = 'gs://pleasepleasework/image1.jpeg',
+  // mimeType = 'image/jpeg'
 ) {
   // Initialize Vertex with your Cloud project and location
   const vertexAI = new VertexAI({project: projectId, location: location});
 
-  // Instantiate the model
   const generativeVisionModel = vertexAI.getGenerativeModel({
     model: model,
   });
 
-  // For images, the SDK supports both Google Cloud Storage URI and base64 strings
-  const filePart = {
-    fileData: {
-      fileUri: image,
-      mimeType: mimeType,
-    },
-  };
-
-  const textPart = {
-    text: 'what is shown in this image?',
-  };
-
+  // Pass multimodal prompt
   const request = {
-    contents: [{role: 'user', parts: [filePart, textPart]}],
+    contents: [
+      {
+        role: 'user',
+        parts: [
+          {
+            fileData: {
+              fileUri: 'gs://pleasepleasework/IMG_1872.mp4',
+              mimeType: 'video/mp4',
+            },
+          },
+          {
+            text: 'What is in the video briefly?',
+          },
+        ],
+      },
+    ],
   };
 
-  console.log('Prompt Text:');
-  console.log(request.contents[0].parts[1].text);
-
-  console.log('Non-Streaming Response Text:');
-  // Create the response stream
-  const responseStream = await generativeVisionModel.generateContent(request);
-  console.log('here');
-  // Wait for the response stream to complete
-  const aggregatedResponse = await responseStream.response;
-
-  
-
+  // Create the response
+  const response = await generativeVisionModel.generateContent(request);
+  // Wait for the response to complete
+  const aggregatedResponse = await response.response;
   // Select the text from the response
   const fullTextResponse =
     aggregatedResponse.candidates[0].content.parts[0].text;
@@ -53,9 +48,54 @@ async function createNonStreamingMultipartContent(
   console.log(fullTextResponse);
 }
 
-createNonStreamingMultipartContent();
+sendMultiModalPromptWithVideo();
 
 
+
+
+//   // Instantiate the model
+//   const generativeVisionModel = vertexAI.getGenerativeModel({
+//     model: model,
+//   });
+
+//   // For images, the SDK supports both Google Cloud Storage URI and base64 strings
+//   const filePart = {
+//     fileData: {
+//       fileUri: image,
+//       mimeType: mimeType,
+//     },
+//   };
+
+//   const textPart = {
+//     text: 'what is shown in this image?',
+//   };
+
+//   const request = {
+//     contents: [{role: 'user', parts: [filePart, textPart]}],
+//   };
+
+//   console.log('Prompt Text:');
+//   console.log(request.contents[0].parts[1].text);
+
+//   console.log('Non-Streaming Response Text:');
+//   // Create the response stream
+//   const responseStream = await generativeVisionModel.generateContent(request);
+//   console.log('here');
+//   // Wait for the response stream to complete
+//   const aggregatedResponse = await responseStream.response;
+
+  
+
+//   // Select the text from the response
+//   const fullTextResponse =
+//     aggregatedResponse.candidates[0].content.parts[0].text;
+
+//   console.log(fullTextResponse);
+// }
+
+// createNonStreamingMultipartContent();
+
+// test
 
 
 // const { VertexAI } = require("@google-cloud/vertexai");
