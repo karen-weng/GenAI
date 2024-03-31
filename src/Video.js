@@ -40,10 +40,6 @@ function Video() {
         width: "auto",
         height: "auto", 
         position: "absolute",
-        right: "0",
-        bottom: "0",
-        top: "0",
-        left: "0",
         zIndex: "-100",
       }}
     >
