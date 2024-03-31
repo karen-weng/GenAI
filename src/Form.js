@@ -1,3 +1,4 @@
+import livevid from './Video'
 
 function Form({state, setState}) {
     return(
@@ -16,7 +17,7 @@ function Form({state, setState}) {
                 }}/>
             <br />
             <br />
-            <button onclick="myFunction()"> GuideMe </button>
+            <button onclick="livevid()"> GuideMe </button>
             <br />
             <br />
             {/* You entered: {state} */}
