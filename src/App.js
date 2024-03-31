@@ -50,7 +50,7 @@ function App() {
         <div class="userInput">
           <br />
           <br />
-          <Form state={state} useState={useState} />
+          <Form state={state} setState={setState} useState={useState} />
         </div>
         
         
