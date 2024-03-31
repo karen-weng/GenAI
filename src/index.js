@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import Ahpp from './App';
 import reportWebVitals from './reportWebVitals';
-import Aphp from './Components/gemini';
+import App from './Components/gemini';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
